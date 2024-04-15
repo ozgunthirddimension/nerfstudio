@@ -101,7 +101,6 @@ class Cameras(TensorDataclass):
     camera_type: Int[Tensor, "*num_cameras 1"]
     times: Optional[Float[Tensor, "num_cameras 1"]]
     metadata: Optional[Dict]
-    image_filenames: Optional[List]
     Rs: Optional[Float[Tensor, "*num_cameras 3 3"]]
     ts: Optional[Float[Tensor, "*num_cameras  1"]]
 
@@ -123,7 +122,6 @@ class Cameras(TensorDataclass):
         ] = CameraType.PERSPECTIVE,
         times: Optional[Float[Tensor, "num_cameras"]] = None,
         metadata: Optional[Dict] = None,
-        image_filenames: Optional[List] = None,
         world_to_cameras: Optional[Float[Tensor, "*num_cameras 3 4"]] = None,
         Rs: Optional[Float[Tensor, "*num_cameras 3 3"]] = None,
         ts: Optional[Float[Tensor, "*num_cameras  1"]] = None,
@@ -169,9 +167,6 @@ class Cameras(TensorDataclass):
         self.times = self._init_get_times(times)
 
         self.metadata = metadata
-        
-        # image filenames
-        self.image_filenames = image_filenames
 
         self.__post_init__()  # This will do the dataclass post_init and broadcast all the tensors
 
