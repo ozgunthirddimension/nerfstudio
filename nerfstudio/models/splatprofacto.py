@@ -475,7 +475,7 @@ class SplatProfactoModel(SplatfactoModel):
             opacity_mask = opacity_mask.repeat(1, 1, 3)
 
         Ll1 = torch.abs(gt_img[opacity_mask] - pred_img[opacity_mask]).mean()
-        simloss = 1 - self.ssim(gt_img.permute(2, 0, 1)[None, ...], pred_img.permute(2, 0, 1)[None, ...])
+        simloss = 1 - self.ssim(gt_img.permute(2, 0, 1)[None, ...], pred_img.permute(2, 0, 1)[None, ...], mask = opacity_mask.permute(2, 0, 1)[None, ...])
         if self.config.use_scale_regularization and self.step % 10 == 0:
             scale_exp = torch.exp(self.scales)
             scale_reg = (

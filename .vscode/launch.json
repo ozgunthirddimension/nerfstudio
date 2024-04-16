@@ -4,6 +4,7 @@
   // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
+
     {
       "name": "Launch Chrome against localhost",
       "request": "launch",
@@ -244,6 +245,7 @@
       "cwd": "/home/ubuntu/nerfstudio",
       "python": "/home/ubuntu/miniconda3/envs/nerfstudio/bin/python",
       "console": "integratedTerminal",
+      "justMyCode": false,
       "args": [
         "splatprofacto",
         "--pipeline.model.cull_alpha_thresh=0.005",
@@ -268,7 +270,7 @@
         "--data", "/home/ubuntu/data/gaussianpro_test", 
         "colmap", 
         "--auto-scale-poses", "False",
-        "--masks_path", "mask",
+        // "--masks_path", "mask",
       ]
     },
   ]

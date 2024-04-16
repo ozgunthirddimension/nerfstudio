@@ -388,10 +388,6 @@ class ColmapDataParser(DataParser):
             width=width,
             camera_to_worlds=poses[:, :3, :4],
             camera_type=camera_type,
-            image_filenames=image_filenames,
-            world_to_cameras=torch.from_numpy(np.array(world_view_transforms).astype(np.float32))[idx_tensor],
-            Rs=Rs,
-            ts=ts,
         )
 
         cameras.rescale_output_resolution(scaling_factor=1.0 / downscale_factor)
